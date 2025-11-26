@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none" width="240" height="64">
+  <g stroke="#4e38f4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="20" />
+    <path d="M12 32h40" />
+    <path d="M32 12c4 5 8 12 8 20s-4 15-8 20" />
+    <path d="M32 12c-4 5-8 12-8 20s4 15 8 20" />
+  </g>
+
+  <text x="65" y="43" fill="#4e38f4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="34" letter-spacing="-0.5">
+    GlobalNet
+  </text>
+</svg>
