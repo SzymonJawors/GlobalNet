@@ -12,37 +12,38 @@ import { useUser } from "@clerk/clerk-react";
 import Layout from "./pages/Layout";
 
 const App = () => {
-  const user = useUser();
+  const { isSignedIn, isLoaded } = useUser();
+
+  if (!isLoaded) return null; // ważne!
+
   return (
-    <>
-      <Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={!isSignedIn ? <Login /> : <Layout />}
+      >
+        <Route index element={<Feed />} />
+        <Route path="messages" element={<Messages />} />
         <Route
-          path="/"
-          element={!user ? <Login /> : <Layout />}
-        >
-          <Route index element={<Feed />} />
-          <Route path="messages" element={<Messages />} />
-          <Route
-            path="messages/:userId"
-            element={<ChatBox />}
-          />
-          <Route
-            path="connections"
-            element={<Connections />}
-          />
-          <Route path="discover" element={<Discover />} />
-          <Route path="profile" element={<Profile />} />
-          <Route
-            path="profile/:profileId"
-            element={<Profile />}
-          />
-          <Route
-            path="create-post"
-            element={<CreatePost />}
-          />
-        </Route>
-      </Routes>
-    </>
+          path="messages/:userId"
+          element={<ChatBox />}
+        />
+        <Route
+          path="connections"
+          element={<Connections />}
+        />
+        <Route path="discover" element={<Discover />} />
+        <Route path="profile" element={<Profile />} />
+        <Route
+          path="profile/:profileId"
+          element={<Profile />}
+        />
+        <Route
+          path="create-post"
+          element={<CreatePost />}
+        />
+      </Route>
+    </Routes>
   );
 };
 
