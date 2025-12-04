@@ -4,6 +4,11 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { plPL } from "@clerk/localizations";
+import moment from "moment/dist/moment.js";
+import "moment/dist/locale/pl.js";
+
+moment.locale("pl");
+console.log(moment.locale())
 
 const PUBLISHABLE_KEY = import.meta.env
   .VITE_CLERK_PUBLISHABLE_KEY;
