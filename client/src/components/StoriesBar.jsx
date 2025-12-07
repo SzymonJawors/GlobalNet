@@ -27,7 +27,7 @@ const StoriesBar = () => {
               <Plus className="w-5 h-5 text-white" />
             </div>
             <p className="text-sm font-medium text-slate-700 text-center">
-              Stwórz Story
+              Create stories
             </p>
           </div>
         </div>

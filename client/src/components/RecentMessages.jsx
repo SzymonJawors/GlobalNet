@@ -14,7 +14,7 @@ const RecentMessages = () => {
   return (
     <div className="bg-white max-w-xs mt-4 p-4 min-h-20 rounded-md shadow text-xs text-slate-800">
       <h3 className="font-semibold text-slate-800 mb-4">
-        Ostatnie wiadomości
+        Recent messages
       </h3>
       <div className="flex flex-col max-h-54 overflow-y-scroll no-scrollbar">
         {messages.map((message, index) => (

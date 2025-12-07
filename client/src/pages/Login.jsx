@@ -35,15 +35,15 @@ const Login = () => {
                     />
                   ))}
               </div>
-              <p>Używane przez 10k+ programistów</p>
+              <p>Used by 10k+ developers</p>
             </div>
           </div>
           <h1 className="text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
-            Poznawaj ludzi ze środowiska IT
+            Meet people from the IT community
           </h1>
           <p className="text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md">
-            oraz rozmawiaj ze znajomymi z całego świata
-            dzięki GlobalNet.
+            and chat with friends from all around the world
+            thanks to GlobalNet.
           </p>
         </div>
         <span className="md:h-10"></span>

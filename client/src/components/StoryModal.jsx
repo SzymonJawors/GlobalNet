@@ -67,7 +67,7 @@ const StoryModal = ({ setShowModal, fetchStories }) => {
             <ArrowLeft />
           </button>
           <h2 className="text-lg font-semibold">
-            Stwórz storke
+            Create stories
           </h2>
           <span className="w-10"></span>
         </div>
@@ -121,7 +121,7 @@ const StoryModal = ({ setShowModal, fetchStories }) => {
                 : "bg-zinc-800"
             }`}
           >
-            <TextIcon size={18} /> Tekst
+            <TextIcon size={18} /> Text
           </button>
           <label
             className={`flex-1 flex items-center justify-center gap-2 p-2 rounded cursor-pointer ${
@@ -139,20 +139,20 @@ const StoryModal = ({ setShowModal, fetchStories }) => {
               accept="image/*, video/*"
               className="hidden"
             />
-            <Upload size={18} /> Zdjęcie/Film
+            <Upload size={18} /> Image/Video
           </label>
         </div>
         <button
           onClick={() =>
             toast.promise(handleCreateStory(), {
-              loading: "Zapisuję...",
-              success: <p>Utworzono!</p>,
+              loading: "Saving...",
+              success: <p>Created!</p>,
               error: (e) => <p>{e.message}</p>,
             })
           }
           className="flex items-center justify-center gap-2 text-white py-3 mt-4 w-full rounded bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 active:scale-95 transition cursor-pointer"
         >
-          <Sparkle size={18} /> Stwórz storke
+          <Sparkle size={18} /> Create stories
         </button>
       </div>
     </div>
