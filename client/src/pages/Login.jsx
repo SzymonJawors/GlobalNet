@@ -31,17 +31,17 @@ const Login = () => {
                   .map((_, i) => (
                     <Star
                       key={i}
-                      className="size-4 md:size-4.5 text-transparent fill-amber-500"
+                      className="size-4 md:size-5 text-transparent fill-yellow-500"
                     />
                   ))}
               </div>
-              <p>Used by 10k+ developers</p>
+              <p className="text-gray-600 font-medium">Used by 10k+ developers</p>
             </div>
           </div>
-          <h1 className="text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-indigo-950 to-indigo-800 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
             Meet people from the IT community
           </h1>
-          <p className="text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md">
+          <p className="text-xl md:text-3xl text-gray-800 max-w-72 md:max-w-md mt-2">
             and chat with friends from all around the world
             thanks to GlobalNet.
           </p>

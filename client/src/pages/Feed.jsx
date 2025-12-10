@@ -8,38 +8,46 @@ import RecentMessages from "../components/RecentMessages";
 const Feed = () => {
   const [feeds, setFeeds] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const fetchFeeds = async () => {
     setFeeds(dummyPostsData);
     setLoading(false);
   };
+
   useEffect(() => {
     fetchFeeds();
   }, []);
+
   return !loading ? (
-    <div className="h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8">
-      <div>
+    <div className="h-full overflow-y-scroll no-scrollbar py-8 px-2 xl:pr-5 flex items-start justify-center xl:gap-8 bg-gray-50">
+      <div className="w-full max-w-2xl">
         <StoriesBar />
-        <div className="p-4 space-y-6">
+        <div className="p-2 sm:p-4 space-y-6 mt-2">
           {feeds.map((post) => (
             <PostCard key={post._id} post={post} />
           ))}
         </div>
       </div>
-      {/*right */}
-      <div className="max-xl:hidden sticky top-0">
-        <div className="max-w-xs bg-white text-xs p-4 rounded-md inline-flex flex-col gap-2 shadow">
-          <h3 className="text-slate-800 font-semibold">
-            Placeholder for sponsor
+
+      <div className="max-xl:hidden sticky top-6 w-80 space-y-6">
+        <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-3">
+          <h3 className="text-gray-900 font-bold text-sm tracking-wide">
+            Sponsored
           </h3>
           <img
             src={assets.sponsored_img}
             alt="sponsor"
-            className="w-75 h-50 rounded-md"
+            className="w-full h-auto rounded-lg object-cover border border-gray-100"
           />
-          <p className="text-slate-600">Sponsor email</p>
-          <p className="text-slate-400">
-            Placeholder for sponsor
-          </p>
+          <div>
+            <p className="text-sm font-semibold text-gray-900">
+              Sponsor Brand
+            </p>
+            <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+              Promote your product to thousands of
+              developers in the community.
+            </p>
+          </div>
         </div>
         <RecentMessages />
       </div>

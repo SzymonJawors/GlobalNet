@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const StoryViewer = ({ viewStory, setViewStory }) => {
   const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     let timer, progressInterval;
     if (viewStory && viewStory.media_type !== "video") {
@@ -23,10 +24,13 @@ const StoryViewer = ({ viewStory, setViewStory }) => {
       clearInterval(progressInterval);
     };
   }, [viewStory, setViewStory]);
+
   const handleClose = () => {
     setViewStory(null);
   };
+
   if (!viewStory) return null;
+
   const renderContent = () => {
     switch (viewStory.media_type) {
       case "image":
@@ -34,7 +38,7 @@ const StoryViewer = ({ viewStory, setViewStory }) => {
           <img
             src={viewStory.media_url}
             alt="img"
-            className="max-w-full max-h-screen object-contain"
+            className="max-w-full max-h-screen object-contain drop-shadow-2xl"
           />
         );
       case "video":
@@ -43,14 +47,14 @@ const StoryViewer = ({ viewStory, setViewStory }) => {
             onEnded={() => setViewStory(null)}
             src={viewStory.media_url}
             alt="video"
-            className="max-h-screen"
+            className="max-h-screen max-w-full"
             controls
             autoPlay
           />
         );
       case "text":
         return (
-          <div className="w-full h-full items-center justify-center p-8 text-white text-2xl text-center">
+          <div className="w-full h-full flex items-center justify-center p-8 text-white text-3xl font-bold text-center leading-relaxed">
             {viewStory.content}
           </div>
         );
@@ -59,40 +63,51 @@ const StoryViewer = ({ viewStory, setViewStory }) => {
         return null;
     }
   };
+
   return (
     <div
-      className="fixed inset-0 h-screen bg-black bg-opacity-90 z-110 flex items-center justify-center"
+      className="fixed inset-0 h-screen w-screen z-[100] flex items-center justify-center bg-black"
       style={{
         backgroundColor:
           viewStory.media_type === "text"
             ? viewStory.background_color
-            : "#000000",
+            : "#09090b",
       }}
     >
-      <div className="absolute top-0 left-0 w-full h-1 bg-gray-700">
+      <div className="absolute top-0 left-0 w-full h-1.5 bg-white/20 z-50">
         <div
-          className="h-full bg-white transition-all duration-100 linear"
+          className="h-full bg-white transition-all duration-100 linear shadow-[0_0_10px_rgba(255,255,255,0.5)]"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
-      <div className="absolute top-4 left-4 flex items-center space-x-3 p-2 px-4 sm:p-4 sm:px-8 backdrop-blur-2xl rounded bg-black/50">
+
+      <div className="absolute top-6 left-4 flex items-center gap-3 py-2 pl-2 pr-4 backdrop-blur-md rounded-full bg-black/30 border border-white/10 z-50 shadow-lg">
         <img
           src={viewStory.user?.profile_picture}
           alt="profile picture"
-          className="size-7 sm:size-8 rounded-full object-cover border border-white"
+          className="size-9 rounded-full object-cover border-2 border-white/20"
         />
-        <div className="text-white font-medium flex items-center gap-1.5">
-          <span>{viewStory.user?.full_name}</span>
-          <BadgeCheck size={18} />
+        <div className="text-white flex flex-col justify-center">
+          <div className="flex items-center gap-1">
+            <span className="text-sm font-semibold tracking-wide shadow-black drop-shadow-md">
+              {viewStory.user?.full_name}
+            </span>
+            <BadgeCheck
+              size={16}
+              className="text-blue-500 fill-blue-500/10"
+            />
+          </div>
         </div>
       </div>
+
       <button
         onClick={handleClose}
-        className="absolute top-4 right-4 text-white text-3xl font-bold focus:outline-none"
+        className="absolute top-6 right-4 text-white z-50 p-2 rounded-full hover:bg-white/10 transition-colors"
       >
-        <X className="w-8 h-8 hover:scale-110 transition cursor-pointer" />
+        <X className="w-6 h-6" />
       </button>
-      <div className="max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+
+      <div className="w-full h-full flex items-center justify-center relative">
         {renderContent()}
       </div>
     </div>

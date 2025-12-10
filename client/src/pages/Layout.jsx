@@ -8,22 +8,33 @@ import Loading from "../components/Loading";
 const Layout = () => {
   const user = dummyUserData;
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return user ? (
-    <div className="w-full flex h-screen">
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}/>
-      <div className="flex-1 bg-slate-50">
+    <div className="w-full flex h-screen bg-gray-50">
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
+
+      <div className="flex-1 h-full overflow-hidden">
         <Outlet />
       </div>
+
+      {/* Mobile Menu Toggle Button - Floating Style */}
       {sidebarOpen ? (
-        <X
-          className="absolute top-3 right-3 p-2 z-100 bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden"
+        <button
+          className="fixed top-4 right-4 z-[100] p-2.5 bg-white border border-gray-200 rounded-full shadow-lg text-gray-900 sm:hidden hover:bg-gray-100 active:scale-90 transition-all duration-200"
           onClick={() => setSidebarOpen(false)}
-        />
+        >
+          <X className="w-6 h-6" />
+        </button>
       ) : (
-        <Menu
-          className="absolute top-3 right-3 p-2 z-100 bg-white rounded-md shadow w-10 h-10 text-gray-600 sm:hidden"
+        <button
+          className="fixed top-4 right-4 z-[100] p-2.5 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full shadow-lg text-gray-900 sm:hidden hover:bg-white active:scale-90 transition-all duration-200"
           onClick={() => setSidebarOpen(true)}
-        />
+        >
+          <Menu className="w-6 h-6" />
+        </button>
       )}
     </div>
   ) : (
