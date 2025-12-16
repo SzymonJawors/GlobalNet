@@ -11,10 +11,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const { signOut } = useClerk();
   return (
     <div
-      className={`w-60 xl:w-72 bg-white border-r border-gray-100 flex flex-col justify-between items-center max-sm:absolute top-0 bottom-0 z-20 ${
+      className={`w-60 xl:w-72 bg-white border-r border-gray-100 flex flex-col justify-between items-center fixed h-full sm:relative z-50 ${
         sidebarOpen
-          ? "translate-x-0"
-          : "max-sm:translate-x-full"
+          ? "translate-x-0 shadow-2xl"
+          : "-translate-x-full sm:translate-x-0"
       } transition-all duration-300 ease-in-out`}
     >
       <div className="w-full">
